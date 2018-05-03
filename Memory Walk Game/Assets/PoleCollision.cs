@@ -26,11 +26,7 @@ public class PoleCollision : MonoBehaviour {
 
     private void OnCollisionStay(Collision collision)
     {
-        if (!collidEffect.isPlaying && collision.relativeVelocity.magnitude >= 2)
-        {
-            collidEffect.volume = collision.relativeVelocity.magnitude / 20;
-            collidEffect.Play();
-        }
+        triggerCollisionSound(collision.relativeVelocity.magnitude);
     }
 
     private void OnJointBreak(float breakForce)
@@ -38,11 +34,18 @@ public class PoleCollision : MonoBehaviour {
         Material[] mats = gameObject.GetComponent<Renderer>().materials;
         mats[1] = lightOffMat;
         gameObject.GetComponent<Renderer>().materials = mats;
-        gameObject.GetComponentInChildren<Light>().enabled = false;
+        Light[] lights = gameObject.GetComponentsInChildren<Light>();
+        foreach(Light light in lights)
+            light.enabled = false;
         breakEffect.Play();
-        if (!collidEffect.isPlaying && breakForce >= 2)
+        triggerCollisionSound(breakForce);
+    }
+
+    private void triggerCollisionSound(float force)
+    {
+        if (!collidEffect.isPlaying && force >= 2)
         {
-            collidEffect.volume = breakForce / 20;
+            collidEffect.volume = force / 20;
             collidEffect.Play();
         }
     }
