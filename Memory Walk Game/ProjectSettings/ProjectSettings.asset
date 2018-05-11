@@ -641,11 +641,15 @@ PlayerSettings:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
+    Build: 0
+    Collab: 1
+    ErrorHub: 0
+    Hub: 0
     UNet: 1
   facebookSdkVersion: 7.9.1
   apiCompatibilityLevel: 2
   cloudProjectId: 707ac8d5-24d4-4b08-9015-a90b4e87cd5a
-  projectName: Memory Walk Game (2)
+  projectName: Memory Walk Game
   organizationId: mohamed154
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
